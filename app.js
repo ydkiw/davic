@@ -1,4 +1,4 @@
-require('dotenv').config();
+import('dotenv').config();
 
 const apiKey = process.env.API_KEY;  // .env 파일에서 API_KEY 가져오기
 
