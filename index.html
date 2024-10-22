@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미대생 이야기</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      font-family: Pretendard, sans-serif;
+      overflow: hidden;
+    }
+
+    #start-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('davinci.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 10;
+    }
+
+    #logo {
+      position: relative;
+      width: 2500px;
+      height: auto;
+      left: 100px;
+    }
+
+    #game-ui {
+      display: none;
+    }
+
+    #dialogue-container {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 100px;
+      box-sizing: border-box;
+    }
+
+    #dialogue-box {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 20px;
+      color: white;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #character-name {
+      position: absolute;
+      top: -30px;
+      left: 20px;
+      background: #4a90e2;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    #dialogue-text {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    #keyword-options {
+      position: absolute;
+      top: -700px;
+      right: 100px;
+      width: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 500px;
+    }
+
+    #keyword-options button {
+      width: 100%;
+      padding: 20px;
+      background-color: #a2c4d8;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #keyword-options button:hover {
+      background-color: #85b3cf;
+    }
+
+    #end-button {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #f78f1e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="start-screen" style="background-size: cover;">
+    <img id="logo" src="logo.png" alt="Game Logo">
+  </div>
+
+  <div id="game-ui">
+    <div id="dialogue-container">
+      <div id="dialogue-box">
+        <div id="character-name">교수님</div>
+        <div id="dialogue-text">이야기가 시작됩니다...</div>
+      </div>
+      <div id="keyword-options"></div>
+      <button id="end-button">마무리</button>
+    </div>
+  </div>
+
+  <script src="app.js" type="module">
+    
+  </script>
+</body>
+</html>
