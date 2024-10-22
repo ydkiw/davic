@@ -1,9 +1,11 @@
-import config from "../config.js"; // config.js에서 config 객체를 가져옵니다.
+require('dotenv').config();
 
+const apiKey = process.env.API_KEY;  // .env 파일에서 API_KEY 가져오기
+
+console.log(apiKey);
 
 async function getCompletion(text) {
     const apiUrl = "https://api.minigpt4o.com/v1/generate";
-    const { API_KEY } = config; // API_KEY를 구조 분해 할당으로 가져옵니다.
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
