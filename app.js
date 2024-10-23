@@ -38,7 +38,7 @@ async function getCompletion(text) {
   const endButton = document.getElementById('end-button');
 
   let userApiKey = ''; // 사용자가 입력한 API 키를 저장할 변수
-  let storyText = "미대생이 대학교에서 야작을 하고 있다."; // 초기 스토리 시작
+  let storyText = "미대생이 대학교에서 야작을 하고 있습니다."; // 초기 스토리 시작
   let objectionCount = 0;
   const maxObjections = 5;
   let passageCount = 0; 
@@ -139,13 +139,13 @@ async function continueStory(prompt) {
   async function showKeywordOptions() {
     const keywords = await generateRandomKeywords(); // AI로부터 키워드 생성
     optionsDiv.innerHTML = ''; // 기존 키워드 제거
-    keywords.forEach(keyword => {
+    keywords.forEach((keyword) => {
       const button = document.createElement('button');
       button.innerText = keyword.trim(); // 키워드 버튼 생성
-      button.onclick = () => chooseKeyword(keyword.trim());
-      optionsDiv.appendChild(button);
+      button.onclick = () => chooseKeyword(keyword.trim()); // 각 버튼이 하나의 키워드를 선택
+      optionsDiv.appendChild(button); // 각 키워드마다 개별 버튼 생성
     });
-    optionsDiv.style.display = 'block';
+    optionsDiv.style.display = 'flex'; // 키워드 선택지 버튼들을 flex로 표시
   }
   
   // 키워드 선택 후 이야기 전개
@@ -180,7 +180,7 @@ async function continueStory(prompt) {
       passageCount++;
       if (passageCount === maxPassages) {
         // 대사를 다 넘겼으면 키워드 선택 화면으로 전환
-        showKeywordOptions();
+        showKeywordOptions(generateRandomKeywords());
       }
     }
   });
