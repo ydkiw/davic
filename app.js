@@ -91,7 +91,7 @@ async function continueStory(prompt) {
         },
         body: JSON.stringify({
           model: "gpt-4o-mini",
-          messages: [{ role: "system", content: "너는 이야기 교수님이야." }, { role: "user", content: prompt }],
+          messages: [{ role: "system", content: "너는 이야기꾼이야. 독자가 보기에 아주 흥미로운 이야기를 장르를 가리지 않고 풀어내는게 네 일이야." }, { role: "user", content: prompt }],
           max_tokens: 100,
           n: 1,
           stop: null,
@@ -118,7 +118,7 @@ async function continueStory(prompt) {
             },
             body: JSON.stringify({
               model: "gpt-4o-mini",
-              messages: [{ role: "system", content: "세 가지 키워드를 무작위로 생성해줘." }],
+              messages: [{ role: "system", content: "세 가지 단어 키워드를 무작위로 생성해줘." }],
               max_tokens: 50,
               n: 1,
               stop: null,
