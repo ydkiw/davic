@@ -36,6 +36,17 @@
       display: none;
     }
 
+    #game-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('gameback.png');
+      background-size: cover;
+      background-position: center;
+    }
+
     #dialogue-container {
       position: absolute;
       bottom: 0;
@@ -70,7 +81,7 @@
 
     #keyword-options {
       position: absolute;
-      top: 100px;
+      top: -400px;
       right: 20px;
       width: 200px;
       display: flex;
@@ -144,6 +155,7 @@
   </div>
 
   <div id="game-ui">
+    <div id="game-background"></div>
     <div id="dialogue-container">
       <div id="dialogue-box">
         <div id="character-name">교수님</div>
