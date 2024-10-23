@@ -70,17 +70,15 @@
 
     #keyword-options {
       position: absolute;
-      top: -700px;
+      bottom: 50px; /* 버튼 위치를 화면 하단에 가까이 조정 */
       right: 100px;
-      width: 1000px;
       display: flex;
-      flex-direction: column;
-      gap: 500px;
+      gap: 20px; /* 버튼 간격 조정 */
     }
 
     #keyword-options button {
-      width: 100%;
-      padding: 20px;
+      width: 200px; /* 버튼 너비 조정 */
+      padding: 10px;
       background-color: #a2c4d8;
       color: black;
       border: none;
@@ -132,7 +130,6 @@
   </style>
 </head>
 <body>
-  <!-- API 키 입력 폼 추가 -->
   <div id="api-key-screen">
     <h2>API Key 입력</h2>
     <input type="text" id="api-key-input" placeholder="API Key를 입력하세요" autofocus>
@@ -149,7 +146,7 @@
         <div id="character-name">교수님</div>
         <div id="dialogue-text">이야기가 시작됩니다...</div>
       </div>
-      <div id="keyword-options"></div>
+      <div id="keyword-options"></div> <!-- 키워드 옵션 위치 수정 -->
       <button id="end-button">마무리</button>
     </div>
   </div>

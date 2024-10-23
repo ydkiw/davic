@@ -1,4 +1,5 @@
 async function getCompletion(text) {
+
     const apiUrl = "https://api.openai.com/v1/chat/completions";
   
     const response = await fetch(apiUrl, {
@@ -55,7 +56,29 @@ apiKeySubmit.addEventListener('click', () => {
     }
   });
 
+  // API 키 제출 함수
+function submitApiKey() {
+    userApiKey = apiKeyInput.value.trim();
+    if (userApiKey) {
+      // 시작 화면과 API 입력 창을 숨김
+      apiKeyScreen.style.display = 'none';
+      startScreen.style.display = 'none';
+      // 게임 UI를 보이게 설정
+      gameUI.style.display = 'block';
+    } else {
+      alert('API Key를 입력해주세요.');
+    }
+  }
   
+  // 버튼 클릭 시 API 키 제출
+  apiKeySubmit.addEventListener('click', submitApiKey);
+  
+  // 엔터 키로 API 키 제출
+  apiKeyInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      submitApiKey();
+    }
+  });
 
 // GPT-4o 미니 API 호출
 async function continueStory(prompt) {
@@ -85,32 +108,32 @@ async function continueStory(prompt) {
     }
 
     // 키워드 무작위 생성 요청
-async function generateRandomKeywords() {
-    try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${userApiKey}` // 키워드 생성 시에도 사용자 API 키 사용
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          messages: [{ role: "system", content: "세 가지 키워드를 무작위로 생성해줘." }],
-          max_tokens: 50,
-          n: 1,
-          stop: null,
-          temperature: 0.7
-        })
-      });
-  
-      const data = await response.json();
-      const keywordText = data.choices[0].message.content;
-      return keywordText.split(','); // 키워드를 쉼표로 구분하여 배열로 반환
-    } catch (error) {
-      console.error("Keyword generation error: ", error);
-      return ["문제 발생", "재시도", "오류"]; // 문제가 발생했을 경우 기본 키워드 제공
-    }
-  }
+    async function generateRandomKeywords() {
+        try {
+          const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${userApiKey}`
+            },
+            body: JSON.stringify({
+              model: "gpt-4o-mini",
+              messages: [{ role: "system", content: "세 가지 키워드를 무작위로 생성해줘." }],
+              max_tokens: 50,
+              n: 1,
+              stop: null,
+              temperature: 0.7
+            })
+          });
+      
+          const data = await response.json();
+          const keywordText = data.choices[0].message.content;
+          return keywordText.split(',').slice(0, 3); // 키워드를 3개로 제한하고 배열로 반환
+        } catch (error) {
+          console.error("Keyword generation error: ", error);
+          return ["문제 발생", "재시도", "오류"]; // 오류 발생 시 기본 키워드 반환
+        }
+      }
   
   // 키워드 선택지 표시
   async function showKeywordOptions() {
